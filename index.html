@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title</title>
+    <meta name="generator" content="emacs" />
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+      google.load("jquery", "1"); // Load JQuery
+      google.load("jqueryui", "1"); // Load jQuery UI
+    </script>
+    <script src="jquery.effects.split.test.js"></script>
+      <style type="text/css">
+      body {
+        font-family: verdana, arial;
+        margin: 3em;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      hr {
+        clear: both;
+        border: 0px solid #999;
+        border-top-width: 1px;
+        margin: 0;
+      }
+
+      hr.thick {
+        border-top-width: 5px;
+      }
+
+      .box, .boxContainer {
+        height: 100px;
+        width: 100px;
+        overflow: visible;
+      }
+
+      .box {
+        color: #292929;
+        border: 1px solid #999;
+        background-color: #ddd;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+	.boxTitle {
+		cursor:pointer;
+	}
+
+      .textBox p {
+        width: 100px;
+        height: 100px;
+      }
+
+      .box p, .box code {
+        margin: 0;
+        text-align: left;
+      }
+
+      .effectList {
+        list-style: none;
+        padding: 0;
+        font-size: 10px;
+        margin: 0;
+      }
+
+      .effectList li {
+        float: left;
+        padding: 1em;
+      }
+
+      .vl, .vr {
+        border: 0px dotted #999;
+      }
+
+      .vl {
+        border-left-width: 4px;
+      }
+
+      .vr {
+        border-right-width: 4px;
+      }
+         </style>
+  </head>
+  <body>
+    <ul class="effectList"> 
+      <li><p class="boxTitle" data-effect="blockSplitFadeOut" data-elementId="blockSplitFadeOut">BlockSplitFadeOut</p><br />
+		<div id="blockSplitFadeOut" class="box testBox"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+      <li class="vr"><p class="boxTitle" data-effect="blockSplitFadeIn" data-elementId="blockSplitFadeIn">BlockSplitFadeIn</p><br />
+		<div id="blockSplitFadeIn"  class="box testBox" style="opacity:0;"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+	  
+      <li><p class="boxTitle" data-effect="splitExplode" data-elementId="splitExplode">splitExplode</p><br />
+		<div id="splitExplode" class="box testBox"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+      <li class="vr"><p class="boxTitle" data-effect="splitConverge" data-elementId="splitConverge">splitConverge</p><br />
+		<div id="splitConverge"  class="box testBox" style="opacity:0;"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li>
+	  
+      <li><p class="boxTitle" data-effect="splitDisintegrate" data-elementId="splitDisintegrate">splitDisintegrate</p><br />
+		<div id="splitDisintegrate" class="box testBox"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+      <li class="vr"><p class="boxTitle" data-effect="splitBuild" data-elementId="splitBuild">splitBuild</p><br />
+		<div id="splitBuild" class="box testBox" style="opacity:0;"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li>
+	  
+	  <li><p class="boxTitle" data-effect="splitShear" data-elementId="splitShear">splitShear</p><br />
+		<div id="splitShear" class="box testBox"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+      <li class="vr"><p class="boxTitle" data-effect="splitUnShear" data-elementId="splitUnShear">splitUnShear</p><br />
+		<div id="splitUnShear" class="box testBox" style="opacity:0;"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li>
+	  
+	  <li><p class="boxTitle" data-effect="splitPinwheel" data-elementId="splitPinwheel">splitPinwheel</p><br />
+		<div id="splitPinwheel" class="box testBox"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li> 
+      <li class="vr"><p class="boxTitle" data-effect="splitUnPinwheel" data-elementId="splitUnPinwheel">splitUnPinwheel</p><br />
+		<div id="splitUnPinwheel" class="box testBox" style="opacity:0;"> 
+			<p style="width: 100px; height: 100px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi nibh. Maecenas metus nisi, tempus sed.</p>
+		</div> 
+      </li>
+    </ul>
+
+  </body>
+</html>
