@@ -22,26 +22,11 @@ $.effects.splitExplode = function(o,show){
 
     /* show is either 1 or null */
     show = show || 0;
-
-    /* Internal callback to run when all animations has finished */
-    function finished() {
-        this.css('opacity',1);
-    }
-    
-    /* Internal callback to run before any animations has begun */
-    function starting(){
-        this.css('opacity',0);
-    }
-    
-    this.css('opacity', show ? 0 : 1);
 	
     var options = o.options = $.extend({}, 
 				       defaultOptions,
 				       o.options,
 				       {
-					   //Setting callback funcs relative for options
-					   finished: show ? finished : null,
-					   starting: !show ? starting : null,
 					   
 					   // piece animate function
 					   animate: function(interval,duration,x,y,parentCoords){
@@ -99,7 +84,7 @@ $.effects.splitExplode = function(o,show){
 					   }
 		                          );
     /* sends the options to the split animation */ 
-    $.effects.splitAnim.call(this, o);
+    $.effects.splitAnim.call(this, o,show);
 };
 
 $.effects.splitConverge = function(o){
@@ -109,26 +94,11 @@ $.effects.splitConverge = function(o){
 $.effects.splitPinwheel = function(o,show){
        /* show is either 1 or null */
     show = show || 0;
-
-    /* Internal callback to run when all animations has finished */
-    function finished() {
-        this.css('opacity',1);
-    }
-    
-    /* Internal callback to run before any animations has begun */
-    function starting(){
-        this.css('opacity',0);
-    }
-    
-    this.css('opacity', show ? 0 : 1);
 	
     var options = o.options = $.extend({}, 
 				       defaultOptions,
 				       o.options,
 				       {
-					   //Setting callback funcs relative for options
-					   finished: show ? finished : null,
-					   starting: !show ? starting : null,
 					   
 					   // piece animate function
 					   animate: function(interval,duration,x,y,parentCoords){
@@ -194,7 +164,7 @@ $.effects.splitPinwheel = function(o,show){
                                        }
                                       );
     /* sends the options to the split animation */ 
-    $.effects.splitAnim.call(this, o);
+    $.effects.splitAnim.call(this, o,show);
 };
 
 $.effects.splitUnPinwheel = function(o){
@@ -207,26 +177,11 @@ $.effects.splitDisintegrate = function(o,show){
 
     /* show is either 1 or null */
     show = show || 0;
-
-    /* Internal callback to run when all animations has finished */
-    function finished() {
-        this.css('opacity',1);
-    }
-    
-    /* Internal callback to run before any animations has begun */
-    function starting(){
-        this.css('opacity',0);
-    }
-
-    this.css('opacity', show ? 0 : 1);
 	
     var options = o.options = $.extend({}, 
 				       defaultOptions,
 				       o.options,
 				       {
-					   //Setting callback funcs relative for options
-					   finished: show ? finished : null,
-					   starting: !show ? starting : null,
                                            
                                            //piece animate function
                                            animate : function(interval, duration, x, y, parentCoords){
@@ -283,7 +238,7 @@ $.effects.splitDisintegrate = function(o,show){
                                        }
                                       );
     /* sends the options to the split animation */ 
-    $.effects.splitAnim.call(this, o);
+    $.effects.splitAnim.call(this, o,show);
 };
 
 $.effects.splitBuild = function(o){
@@ -295,26 +250,11 @@ $.effects.splitShear = function(o,show){
         docWidth = $(document).width();
     /* show is either 1 or null */
     show = show || 0;
-
-    /* Internal callback to run when all animations has finished */
-    function finished() {
-        this.css('opacity',1);
-    }
-    
-    /* Internal callback to run before any animations has begun */
-    function starting(){
-        this.css('opacity',0);
-    }
-
-    this.css('opacity', show ? 0 : 1);
 	
     var options = o.options = $.extend({}, 
 				       defaultOptions,
 				       o.options,
 				       {
-					   //Setting callback funcs relative for options
-					   finished: show ? finished : null,
-					   starting: !show ? starting : null,
                                            
                                            //piece animate function
                                            animate: function(interval, duration, x, y, parentCoords){  
@@ -373,7 +313,7 @@ $.effects.splitShear = function(o,show){
                                       );
 
     /* sends the options to the split animation */ 
-    $.effects.splitAnim.call(this, o);
+    $.effects.splitAnim.call(this, o,show);
                                            
 };
 
@@ -390,19 +330,6 @@ $.effects.blockSplitFadeOut = function(o,show){
         docWidth = $(document).width ();
     /* show is either 1 or null */
     show = show || 0;
-
-    /* Internal callback to run when all animations has finished */
-    function finished() {
-        this.css('opacity',1);
-    }
-
-	 /* Internal callback to run before any animations has begun */
-    function starting(){
-        this.css('opacity',0);
-    }
-
-    /* Hide or show the element according to what we're going to do */
-    this.css ({opacity: show ? 0 : 1});
     
     /* Internal callback to run before animation has started */
     function beforeAnimate(){
@@ -413,9 +340,6 @@ $.effects.blockSplitFadeOut = function(o,show){
                          defaultOptions,
                          o.options,
                          {
-                             // setting callback funcs relative for options
-                             finished: show ? finished : null,
-                             starting: !show ? starting : null,
                              beforeAnimate: beforeAnimate,
 							 
                              // animation piece function
@@ -433,15 +357,22 @@ $.effects.blockSplitFadeOut = function(o,show){
                          }
                         );
     /* sends the options to the split animation */ 
-    $.effects.splitAnim.call(this, o);
+    $.effects.splitAnim.call(this, o, show);
 };
 
 $.effects.blockSplitFadeIn = function(o){
     $.effects.blockSplitFadeOut.call(this,o,1);
 };
 
-$.effects.splitAnim = function(o){
+$.effects.splitAnim = function(o,show){
     var options = o.options;
+	
+	//To ensure that the element is hidden/shown correctly
+	if (show){
+		this.css('opacity', 0).show();
+	} else {
+		this.css('opacity', 1).show();
+	}
     
     return this.queue(
         function(){
@@ -510,7 +441,10 @@ $.effects.splitAnim = function(o){
                 }
             }
             
-            $.type(options.starting) === 'function' && options.starting.call($this);
+			//If element is to be hidden we make it invisible until the transformation is done and then hide it.
+			if (!show){
+				$this.css('visibility','hidden');
+			}
 			
             for(y = 0; y < ly; y++){
                 for(x = 0; x < lx; x++){
@@ -524,8 +458,15 @@ $.effects.splitAnim = function(o){
 
             setTimeout(
                 function(){
-                    // interval callback when event has finished
-                    $.type(options.finished) === 'function' && options.finished.call($this);
+                    //Ensures that the element is hidden/shown correctly
+					if (show){
+						$this.css('opacity','').show();
+					} else {
+						$this.css({
+							opacity: '',
+							visibility: ''
+						}).hide();
+					}
                     
                     // normal object expecting domElement so give it
                     $.type(o.callback) === 'function' && o.callback.call($this[0]);
